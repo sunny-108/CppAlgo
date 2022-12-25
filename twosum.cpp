@@ -1,34 +1,34 @@
 #include <iostream>
 #include <vector>
 #include <unordered_map>
+#include <cstdlib>
 
 using namespace std;
 
 std::vector<int> twosum(std::vector<int>& nums, int target){
-    cout<<"#1";
-    std::vector<int> sol;
+    
     std::unordered_map<int, int> umap;
-
-    for(int i=0; i<nums.size(); ++i){
-        int diff = target - nums.at(i);
-        if(umap.count(diff) == 0)
-            umap[diff] = i;
+    
+    for(int i=0; i<nums.size(); ++i)
+    { 
+        int num = nums.at(i);
+        int num_to_find = target - num;  
+        if(umap.count(num_to_find) == 0){
+            umap[num] = i;
+        }
         else{
-            sol.push_back(umap[diff]);
-            sol.push_back(i);
-            std::cout<<"i = "<<i<<std::endl;
-            break;
+            return {umap[num_to_find], i};
         }
     }
 
-    return sol;
+    return {};
 }
 
 int main(){
     cout<<"shivam"<<endl;
 
-    vector<int> v {2, 7, 11, 15};
-    vector<int> sol = twosum(v, 9);
+    vector<int> v {-1, -2, -3, -4, -5};
+    vector<int> sol = twosum(v, -8);
     for(auto x : sol){
         cout<<" "<<x;
     }
